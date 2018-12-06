@@ -12,6 +12,10 @@
 		4A4498CB21B8A09700DD6A11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4498C921B8A09700DD6A11 /* Main.storyboard */; };
 		4A4498CD21B8A09900DD6A11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4498CC21B8A09900DD6A11 /* Assets.xcassets */; };
 		4A4498D021B8A09900DD6A11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4498CE21B8A09900DD6A11 /* LaunchScreen.storyboard */; };
+		4A4498DA21B8BCF000DD6A11 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498D921B8BCF000DD6A11 /* NetworkHelper.swift */; };
+		4A4498DD21B8BF2D00DD6A11 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498DC21B8BF2D00DD6A11 /* UITextFieldExtensions.swift */; };
+		4A4498DF21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498DE21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift */; };
+		4A4498E221B8CB2600DD6A11 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498E121B8CB2600DD6A11 /* Session.swift */; };
 		7A194FC62BD94CA20376360B /* Pods_TaNoMapa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5133FC9990DA34050B1B3CBA /* Pods_TaNoMapa.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +28,10 @@
 		4A4498CC21B8A09900DD6A11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A4498CF21B8A09900DD6A11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A4498D121B8A09900DD6A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A4498D921B8BCF000DD6A11 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		4A4498DC21B8BF2D00DD6A11 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		4A4498DE21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		4A4498E121B8CB2600DD6A11 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5133FC9990DA34050B1B3CBA /* Pods_TaNoMapa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaNoMapa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC84DB78543C853C675C63ED /* Pods-TaNoMapa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaNoMapa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaNoMapa/Pods-TaNoMapa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,14 +69,50 @@
 		4A4498C421B8A09700DD6A11 /* TaNoMapa */ = {
 			isa = PBXGroup;
 			children = (
+				4A4498E021B8CB0D00DD6A11 /* Model */,
+				4A4498DB21B8BF1400DD6A11 /* Extensions */,
+				4A4498D821B8BCCF00DD6A11 /* NetworkHelper */,
+				4A4498D721B8BCBE00DD6A11 /* ViewControllers */,
 				4A4498C521B8A09700DD6A11 /* AppDelegate.swift */,
-				4A4498C721B8A09700DD6A11 /* LoginViewController.swift */,
 				4A4498C921B8A09700DD6A11 /* Main.storyboard */,
 				4A4498CC21B8A09900DD6A11 /* Assets.xcassets */,
 				4A4498CE21B8A09900DD6A11 /* LaunchScreen.storyboard */,
 				4A4498D121B8A09900DD6A11 /* Info.plist */,
 			);
 			path = TaNoMapa;
+			sourceTree = "<group>";
+		};
+		4A4498D721B8BCBE00DD6A11 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A4498C721B8A09700DD6A11 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4A4498D821B8BCCF00DD6A11 /* NetworkHelper */ = {
+			isa = PBXGroup;
+			children = (
+				4A4498D921B8BCF000DD6A11 /* NetworkHelper.swift */,
+			);
+			path = NetworkHelper;
+			sourceTree = "<group>";
+		};
+		4A4498DB21B8BF1400DD6A11 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A4498DC21B8BF2D00DD6A11 /* UITextFieldExtensions.swift */,
+				4A4498DE21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4A4498E021B8CB0D00DD6A11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A4498E121B8CB2600DD6A11 /* Session.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CC977896459A909CA34C0739 /* Pods */ = {
@@ -189,12 +233,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TaNoMapa/Pods-TaNoMapa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -209,6 +265,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A4498C821B8A09700DD6A11 /* LoginViewController.swift in Sources */,
+				4A4498DD21B8BF2D00DD6A11 /* UITextFieldExtensions.swift in Sources */,
+				4A4498E221B8CB2600DD6A11 /* Session.swift in Sources */,
+				4A4498DF21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift in Sources */,
+				4A4498DA21B8BCF000DD6A11 /* NetworkHelper.swift in Sources */,
 				4A4498C621B8A09700DD6A11 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

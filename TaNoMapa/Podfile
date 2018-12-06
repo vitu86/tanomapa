@@ -7,5 +7,6 @@ target 'TaNoMapa' do
 
   # Pods for TaNoMapa
   pod 'IQKeyboardManagerSwift'
+  pod 'MaterialComponents'
 
 end
