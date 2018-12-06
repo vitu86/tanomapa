@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="7lY-xa-gLJ">
             <objects>
-                <viewController id="hW6-WA-A3J" sceneMemberID="viewController">
+                <viewController id="hW6-WA-A3J" customClass="ListViewController" customModule="TaNoMapa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hth-La-Gd5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,29 +117,31 @@
             </objects>
             <point key="canvasLocation" x="2476" y="464"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="FXc-EF-NrR">
             <objects>
-                <viewController id="0Ks-tb-6Y5" sceneMemberID="viewController">
+                <viewController id="0Ks-tb-6Y5" customClass="MapViewController" customModule="TaNoMapa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yEA-HQ-VjZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="MAPA" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4R-zR-XNZ">
-                                <rect key="frame" x="157.5" y="318.5" width="60" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d07-bz-869">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="t4R-zR-XNZ" firstAttribute="centerX" secondItem="yEA-HQ-VjZ" secondAttribute="centerX" id="5bZ-nJ-VxA"/>
-                            <constraint firstItem="t4R-zR-XNZ" firstAttribute="centerY" secondItem="yEA-HQ-VjZ" secondAttribute="centerY" id="pcl-VC-U4o"/>
+                            <constraint firstItem="d07-bz-869" firstAttribute="leading" secondItem="VkS-uG-5JV" secondAttribute="leading" id="25W-r4-qbR"/>
+                            <constraint firstItem="d07-bz-869" firstAttribute="top" secondItem="VkS-uG-5JV" secondAttribute="top" id="3ht-qL-pHO"/>
+                            <constraint firstItem="VkS-uG-5JV" firstAttribute="trailing" secondItem="d07-bz-869" secondAttribute="trailing" id="ec9-XA-AUZ"/>
+                            <constraint firstItem="VkS-uG-5JV" firstAttribute="bottom" secondItem="d07-bz-869" secondAttribute="bottom" id="vFK-sS-O25"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VkS-uG-5JV"/>
                     </view>
                     <tabBarItem key="tabBarItem" image="IconMapviewDeselected" selectedImage="IconMapviewSelected" id="T7K-mO-4Is"/>
+                    <connections>
+                        <outlet property="mapView" destination="d07-bz-869" id="hwf-gZ-21p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spj-u6-Pp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

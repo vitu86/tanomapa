@@ -56,11 +56,12 @@ class CustomTabBarController: UITabBarController {
     
     private func loadData() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NotificationCenter.default.post(name: NSNotification.Name.loadingLocations, object: nil)
         NetworkHelper.sharedInstance.loadLocations { (result) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             switch result {
             case .Success:
-                self.showAlert(title: "Atenção", message: "Conseguiu pegar tudo.")
+                NotificationCenter.default.post(name: NSNotification.Name.locationsLoaded, object: nil)
             case .NoInternet:
                 self.showAlert(title: "Atenção", message: "Conecte-se à internet e pressione o botão de atualizar.")
             case .Fail:

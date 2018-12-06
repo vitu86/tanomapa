@@ -26,6 +26,13 @@ class NetworkHelper {
     // MARK: Private constants
     private let sessionBaseUrl: String = "https://onthemap-api.udacity.com/v1/session"
     
+    // MARK: Public properties
+    var studentsInformation:[StudentInformation] {
+        get {
+            return locations
+        }
+    }
+    
     // private init for override purpose
     private init() {
     }
