@@ -16,6 +16,8 @@
 		4A4498DD21B8BF2D00DD6A11 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498DC21B8BF2D00DD6A11 /* UITextFieldExtensions.swift */; };
 		4A4498DF21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498DE21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift */; };
 		4A4498E221B8CB2600DD6A11 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498E121B8CB2600DD6A11 /* Session.swift */; };
+		4A4498E421B8D3DB00DD6A11 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498E321B8D3DB00DD6A11 /* CustomTabBarController.swift */; };
+		4A4498E621B8E2CF00DD6A11 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498E521B8E2CF00DD6A11 /* StudentInformation.swift */; };
 		7A194FC62BD94CA20376360B /* Pods_TaNoMapa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5133FC9990DA34050B1B3CBA /* Pods_TaNoMapa.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		4A4498DC21B8BF2D00DD6A11 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		4A4498DE21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4A4498E121B8CB2600DD6A11 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		4A4498E321B8D3DB00DD6A11 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		4A4498E521B8E2CF00DD6A11 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		5133FC9990DA34050B1B3CBA /* Pods_TaNoMapa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaNoMapa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC84DB78543C853C675C63ED /* Pods-TaNoMapa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaNoMapa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaNoMapa/Pods-TaNoMapa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +76,7 @@
 				4A4498E021B8CB0D00DD6A11 /* Model */,
 				4A4498DB21B8BF1400DD6A11 /* Extensions */,
 				4A4498D821B8BCCF00DD6A11 /* NetworkHelper */,
-				4A4498D721B8BCBE00DD6A11 /* ViewControllers */,
+				4A4498D721B8BCBE00DD6A11 /* Controllers */,
 				4A4498C521B8A09700DD6A11 /* AppDelegate.swift */,
 				4A4498C921B8A09700DD6A11 /* Main.storyboard */,
 				4A4498CC21B8A09900DD6A11 /* Assets.xcassets */,
@@ -82,12 +86,13 @@
 			path = TaNoMapa;
 			sourceTree = "<group>";
 		};
-		4A4498D721B8BCBE00DD6A11 /* ViewControllers */ = {
+		4A4498D721B8BCBE00DD6A11 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4A4498C721B8A09700DD6A11 /* LoginViewController.swift */,
+				4A4498E321B8D3DB00DD6A11 /* CustomTabBarController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		4A4498D821B8BCCF00DD6A11 /* NetworkHelper */ = {
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				4A4498E121B8CB2600DD6A11 /* Session.swift */,
+				4A4498E521B8E2CF00DD6A11 /* StudentInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,8 +272,10 @@
 			files = (
 				4A4498C821B8A09700DD6A11 /* LoginViewController.swift in Sources */,
 				4A4498DD21B8BF2D00DD6A11 /* UITextFieldExtensions.swift in Sources */,
+				4A4498E621B8E2CF00DD6A11 /* StudentInformation.swift in Sources */,
 				4A4498E221B8CB2600DD6A11 /* Session.swift in Sources */,
 				4A4498DF21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift in Sources */,
+				4A4498E421B8D3DB00DD6A11 /* CustomTabBarController.swift in Sources */,
 				4A4498DA21B8BCF000DD6A11 /* NetworkHelper.swift in Sources */,
 				4A4498C621B8A09700DD6A11 /* AppDelegate.swift in Sources */,
 			);

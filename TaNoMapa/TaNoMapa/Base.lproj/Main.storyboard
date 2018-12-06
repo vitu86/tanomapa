@@ -82,49 +82,74 @@
                     <connections>
                         <outlet property="emailTextField" destination="Ras-IU-lHT" id="elf-TG-N7t"/>
                         <outlet property="passwordTextField" destination="3SA-7a-W7Z" id="4rm-Sw-si6"/>
-                        <segue destination="7GF-dZ-NQL" kind="show" identifier="segueToLocations" id="skb-eQ-BZ0"/>
+                        <segue destination="KoW-0e-bjY" kind="show" identifier="segueToLocations" id="0h6-hD-CdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="7lY-xa-gLJ">
             <objects>
                 <viewController id="hW6-WA-A3J" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hth-La-Gd5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="LISTA" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-KB-J8J">
+                                <rect key="frame" x="158" y="318.5" width="59" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BGd-KB-J8J" firstAttribute="centerY" secondItem="Hth-La-Gd5" secondAttribute="centerY" id="Qw7-Dh-bur"/>
+                            <constraint firstItem="BGd-KB-J8J" firstAttribute="centerX" secondItem="Hth-La-Gd5" secondAttribute="centerX" id="srX-Cb-dRg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AB8-hQ-meq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="OId-eb-teV"/>
+                    <tabBarItem key="tabBarItem" title="" image="IconListviewDeselected" selectedImage="IconListviewSelected" id="OId-eb-teV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TP-rt-Vck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1938" y="464"/>
+            <point key="canvasLocation" x="2476" y="464"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="FXc-EF-NrR">
             <objects>
                 <viewController id="0Ks-tb-6Y5" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yEA-HQ-VjZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="MAPA" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4R-zR-XNZ">
+                                <rect key="frame" x="157.5" y="318.5" width="60" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t4R-zR-XNZ" firstAttribute="centerX" secondItem="yEA-HQ-VjZ" secondAttribute="centerX" id="5bZ-nJ-VxA"/>
+                            <constraint firstItem="t4R-zR-XNZ" firstAttribute="centerY" secondItem="yEA-HQ-VjZ" secondAttribute="centerY" id="pcl-VC-U4o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VkS-uG-5JV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="T7K-mO-4Is"/>
+                    <tabBarItem key="tabBarItem" image="IconMapviewDeselected" selectedImage="IconMapviewSelected" id="T7K-mO-4Is"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spj-u6-Pp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1938" y="-197"/>
+            <point key="canvasLocation" x="2474" y="-197"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--On The Map-->
         <scene sceneID="gyW-XB-iPA">
             <objects>
-                <tabBarController id="7GF-dZ-NQL" sceneMemberID="viewController">
+                <tabBarController id="7GF-dZ-NQL" customClass="CustomTabBarController" customModule="TaNoMapa" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="On The Map" id="p7o-VB-KaS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a3-rM-QBg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -137,10 +162,32 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ym-6A-Duj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="134"/>
+            <point key="canvasLocation" x="1692" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nAl-aR-5nD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KoW-0e-bjY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TfO-aJ-RY6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7GF-dZ-NQL" kind="relationship" relationship="rootViewController" id="5oO-50-yUD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4eV-PO-xAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="134"/>
         </scene>
     </scenes>
     <resources>
+        <image name="IconListviewDeselected" width="75" height="50"/>
+        <image name="IconListviewSelected" width="75" height="50"/>
+        <image name="IconMapviewDeselected" width="75" height="50"/>
+        <image name="IconMapviewSelected" width="75" height="50"/>
         <image name="LogoUdacity" width="62" height="62"/>
     </resources>
 </document>

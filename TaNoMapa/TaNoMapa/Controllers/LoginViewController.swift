@@ -20,6 +20,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         initUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
+    }
+    
     // MARK: IBActions
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.view.endEditing(true)
@@ -29,6 +34,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.hideCenterIndicator()
                 switch result {
                 case .Success:
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
                     self.performSegue(withIdentifier: "segueToLocations", sender: nil)
                 case .NoInternet:
                     self.showAlert(title: "Atenção", message: "Conecte-se à internet e tente novamente.")
