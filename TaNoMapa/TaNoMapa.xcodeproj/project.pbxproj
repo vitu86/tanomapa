@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A18639921D2A0620000197C /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18639821D2A0620000197C /* AddLocationViewController.swift */; };
+		4A29E61821D2A50A00959249 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A29E61721D2A50A00959249 /* FindLocationViewController.swift */; };
 		4A4498C621B8A09700DD6A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498C521B8A09700DD6A11 /* AppDelegate.swift */; };
 		4A4498C821B8A09700DD6A11 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4498C721B8A09700DD6A11 /* LoginViewController.swift */; };
 		4A4498CB21B8A09700DD6A11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4498C921B8A09700DD6A11 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		3C8934DECFE983A20470195F /* Pods-TaNoMapa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaNoMapa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaNoMapa/Pods-TaNoMapa.debug.xcconfig"; sourceTree = "<group>"; };
+		4A18639821D2A0620000197C /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		4A29E61721D2A50A00959249 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		4A4498C221B8A09700DD6A11 /* TaNoMapa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaNoMapa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4498C521B8A09700DD6A11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4498C721B8A09700DD6A11 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				4A4498E321B8D3DB00DD6A11 /* CustomTabBarController.swift */,
 				4A4498E721B8F43600DD6A11 /* MapViewController.swift */,
 				4A4498E921B8F48A00DD6A11 /* ListViewController.swift */,
+				4A18639821D2A0620000197C /* AddLocationViewController.swift */,
+				4A29E61721D2A50A00959249 /* FindLocationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A29E61821D2A50A00959249 /* FindLocationViewController.swift in Sources */,
 				4A4498C821B8A09700DD6A11 /* LoginViewController.swift in Sources */,
 				4A4498DD21B8BF2D00DD6A11 /* UITextFieldExtensions.swift in Sources */,
 				4A4498E621B8E2CF00DD6A11 /* StudentInformation.swift in Sources */,
@@ -286,6 +293,7 @@
 				4A4498E821B8F43600DD6A11 /* MapViewController.swift in Sources */,
 				4A4498DF21B8C2EC00DD6A11 /* UIViewControllerExtensions.swift in Sources */,
 				4A4498E421B8D3DB00DD6A11 /* CustomTabBarController.swift in Sources */,
+				4A18639921D2A0620000197C /* AddLocationViewController.swift in Sources */,
 				4ADA395621B8F5DC007FEEAA /* NotificationExtensions.swift in Sources */,
 				4A4498DA21B8BCF000DD6A11 /* NetworkHelper.swift in Sources */,
 				4A4498EA21B8F48A00DD6A11 /* ListViewController.swift in Sources */,

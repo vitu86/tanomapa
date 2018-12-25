@@ -32,10 +32,10 @@ class CustomTabBarController: UITabBarController {
     
     @objc private func addButtonTapped(_ sender:UIBarButtonItem) {
         print("Clicou no add")
+        performSegue(withIdentifier: "segueToAdd", sender: nil)
     }
     
     @objc private func refreshButtonTapped(_ sender:UIBarButtonItem) {
-        print("Clicou no refresh")
         loadData()
     }
     
