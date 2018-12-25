@@ -97,21 +97,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="LISTA" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-KB-J8J">
-                                <rect key="frame" x="158" y="318.5" width="59" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SCn-Fb-baM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" textLabel="BFP-9f-Xjj" detailTextLabel="jAA-7v-GrG" imageView="Ygc-2L-kcx" style="IBUITableViewCellStyleSubtitle" id="cOL-cI-vQ5">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cOL-cI-vQ5" id="E4w-WH-K7x">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BFP-9f-Xjj">
+                                                    <rect key="frame" x="54" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jAA-7v-GrG">
+                                                    <rect key="frame" x="54" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="IconPin" id="Ygc-2L-kcx">
+                                                    <rect key="frame" x="15" y="9" width="24" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BGd-KB-J8J" firstAttribute="centerY" secondItem="Hth-La-Gd5" secondAttribute="centerY" id="Qw7-Dh-bur"/>
-                            <constraint firstItem="BGd-KB-J8J" firstAttribute="centerX" secondItem="Hth-La-Gd5" secondAttribute="centerX" id="srX-Cb-dRg"/>
+                            <constraint firstItem="AB8-hQ-meq" firstAttribute="bottom" secondItem="SCn-Fb-baM" secondAttribute="bottom" id="1U4-9j-o1b"/>
+                            <constraint firstItem="AB8-hQ-meq" firstAttribute="trailing" secondItem="SCn-Fb-baM" secondAttribute="trailing" id="TtV-e5-xAD"/>
+                            <constraint firstItem="SCn-Fb-baM" firstAttribute="top" secondItem="AB8-hQ-meq" secondAttribute="top" id="iMA-Sj-Fg3"/>
+                            <constraint firstItem="SCn-Fb-baM" firstAttribute="leading" secondItem="AB8-hQ-meq" secondAttribute="leading" id="vSu-HP-BQn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AB8-hQ-meq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="IconListviewDeselected" selectedImage="IconListviewSelected" id="OId-eb-teV"/>
+                    <connections>
+                        <outlet property="tableView" destination="SCn-Fb-baM" id="42e-op-DAA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TP-rt-Vck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,6 +223,7 @@
         <image name="IconListviewSelected" width="75" height="50"/>
         <image name="IconMapviewDeselected" width="75" height="50"/>
         <image name="IconMapviewSelected" width="75" height="50"/>
+        <image name="IconPin" width="24" height="24"/>
         <image name="LogoUdacity" width="62" height="62"/>
     </resources>
 </document>

@@ -17,13 +17,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
         NotificationCenter.default.addObserver(self, selector: #selector(putLocationsOnMap), name: Notification.Name.locationsLoaded, object: nil)
+        mapView.delegate = self
+        
+        // We call this just in case locations are already loaded and no notification is received on start up
+        putLocationsOnMap(notification: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,7 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // MARK: Private functions
-    @objc private func putLocationsOnMap(notification:Notification) {
+    @objc private func putLocationsOnMap(notification:Notification?) {
         mapView.removeAnnotations(mapView.annotations)
         for item in NetworkHelper.sharedInstance.studentsInformation {
             addAnnotation(location: item)
@@ -43,10 +42,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude!, longitude: location.longitude!)
         
-        if let firstName = location.firstName, let lastName = location.lastName {
-            annotation.title = firstName + " " + lastName
+        if let firstName = location.firstName {
+            annotation.title = firstName
+            if let lastName = location.lastName {
+                annotation.title = annotation.title! + " " + lastName
+            }
         } else {
-            annotation.title = " "
+            annotation.title = ""
         }
         
         // No need to check here if mediaURL is not nil because the delegate function is already checking
@@ -78,9 +80,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+            if let toOpen = view.annotation?.subtitle {
+                if let toOpen = toOpen {
+                    UIApplication.shared.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                }
             }
         }
     }
