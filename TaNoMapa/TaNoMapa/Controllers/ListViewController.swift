@@ -24,7 +24,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // We call this just in case locations are already loaded and no notification is received on start up
         loadInfoToTableView(notification: nil)
     }

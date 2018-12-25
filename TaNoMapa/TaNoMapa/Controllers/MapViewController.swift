@@ -20,7 +20,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
         NotificationCenter.default.addObserver(self, selector: #selector(putLocationsOnMap), name: Notification.Name.locationsLoaded, object: nil)
         mapView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // We call this just in case locations are already loaded and no notification is received on start up
         putLocationsOnMap(notification: nil)
     }

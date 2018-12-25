@@ -38,9 +38,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.passwordTextField.text = ""
                     self.performSegue(withIdentifier: "segueToLocations", sender: nil)
                 case .NoInternet:
-                    self.showAlert(title: "Atenção", message: "Conecte-se à internet e tente novamente.")
+                    self.showAlert(title: "Attention", message: "You are offline.")
                 case .Fail:
-                    self.showAlert(title: "Atenção", message: "Email e/ou senha inválidos.")
+                    self.showAlert(title: "Attention", message: "Invalid email or password.")
                 }
             }
         }
@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func validateFields() -> Bool {
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            self.showAlert(title: "Atenção", message: "Todos os campos são obrigatórios!")
+            self.showAlert(title: "Attention", message: "Fields should not be empty!")
             return false
         }
         return true

@@ -5,6 +5,7 @@
 //  Created by Vitor Costa on 05/12/18.
 //  Copyright © 2018 Vitor Costa. All rights reserved.
 //
+// All requests are based on Udacity's online examples.
 
 import Foundation
 
@@ -102,11 +103,11 @@ class NetworkHelper {
                 guard let sessionInside = sessionData.session,
                     nil != sessionInside.id,
                     nil != sessionInside.expiration
-                else {
-                    DispatchQueue.main.async {
-                        onCompletion(Answer.Fail)
-                    }
-                    return
+                    else {
+                        DispatchQueue.main.async {
+                            onCompletion(Answer.Fail)
+                        }
+                        return
                 }
                 DispatchQueue.main.async {
                     onCompletion(Answer.Success)
@@ -121,7 +122,7 @@ class NetworkHelper {
     }
     
     func loadLocations(onCompletion: @escaping (Answer) -> Void) {
-        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?order=-createdAt")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = URLSession.shared
@@ -135,11 +136,11 @@ class NetworkHelper {
             
             do {
                 guard let decodedJson = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any],
-                let infoArray = decodedJson["results"] as? [[String:Any]] else {
-                    DispatchQueue.main.async {
-                        onCompletion(Answer.Fail)
-                    }
-                    return
+                    let infoArray = decodedJson["results"] as? [[String:Any]] else {
+                        DispatchQueue.main.async {
+                            onCompletion(Answer.Fail)
+                        }
+                        return
                 }
                 self.locations = []
                 for item in infoArray {
@@ -158,4 +159,40 @@ class NetworkHelper {
         }
         task.resume()
     }
+    
+    func postLocation(_ location:DataToServer, onCompletion: @escaping (Answer) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.httpMethod = "POST"
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \"\(self.session!.account!.key!)\", \"firstName\": \"\(location.firstName!)\", \"lastName\": \"\(location.lastName!)\",\"mapString\": \"\(location.mapString!)\", \"mediaURL\": \"\(location.mediaURL!)\",\"latitude\": \(location.latitude!), \"longitude\": \(location.longitude!)}".data(using: String.Encoding.utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    onCompletion(Answer.NoInternet)
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                onCompletion(Answer.Success)
+            }
+        }
+        task.resume()
+    }
+    
+//    func getUserData() {
+//        let request = NSMutableURLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(self.session!.account!.key!)")!)
+//        let session = URLSession.shared
+//        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+//            if error != nil { // Handle error...
+//                return
+//            }
+//            let range = Range(5..<data!.count)
+//            let newData = data?.subdata(in: range) /* subset response data! */
+//            print("User data: ", NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+//        }
+//        task.resume()
+//    }
 }

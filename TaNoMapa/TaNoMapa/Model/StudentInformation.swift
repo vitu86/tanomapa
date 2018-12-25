@@ -47,5 +47,13 @@ struct StudentInformation {
         self.uniqueKey = uniqueKey
         self.updatedAt = updatedAt
     }
-    
+}
+
+struct DataToServer {
+    var firstName:String?
+    var lastName:String?
+    var mapString:String?
+    var mediaURL:String?
+    var latitude:String?
+    var longitude:String?
 }

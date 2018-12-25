@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     static let loadingLocations = Notification.Name("loadingLocations")
     static let locationsLoaded = Notification.Name("locationsLoaded")
+    static let shouldReloadLocations = Notification.Name("shouldReloadLocations")
 }

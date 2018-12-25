@@ -15,7 +15,8 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildNavigation()
-        loadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: Notification.Name.locationsLoaded, object: nil)
+        loadData(notification: nil)
     }
     
     // MARK: Private functions
@@ -23,20 +24,18 @@ class CustomTabBarController: UITabBarController {
         
         let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonTapped))
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshButtonTapped))
-        navigationItem.rightBarButtonItems = [addButton, refreshButton]
-        
+        navigationItem.rightBarButtonItems = [addButton, refreshButton]        
         
         let logoutButton = UIBarButtonItem(title: "LOGOUT", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutButtonTapped))
         navigationItem.leftBarButtonItem = logoutButton
     }
     
     @objc private func addButtonTapped(_ sender:UIBarButtonItem) {
-        print("Clicou no add")
         performSegue(withIdentifier: "segueToAdd", sender: nil)
     }
     
     @objc private func refreshButtonTapped(_ sender:UIBarButtonItem) {
-        loadData()
+        loadData(notification: nil)
     }
     
     @objc private func logoutButtonTapped(_ sender:UIBarButtonItem) {
@@ -47,14 +46,14 @@ class CustomTabBarController: UITabBarController {
             case .Success:
                 self.dismiss(animated: true, completion: nil)
             case .NoInternet:
-                self.showAlert(title: "Atenção", message: "Conecte-se à internet e tente novamente.")
+                self.showAlert(title: "Attention", message: "You are offline.")
             case .Fail:
-                self.showAlert(title: "Atenção", message: "Ocorreu um erro durante o logout.")
+                self.showAlert(title: "Attention", message: "Could not logout.")
             }
         }
     }
     
-    private func loadData() {
+    @objc private func loadData(notification:Notification?) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NotificationCenter.default.post(name: NSNotification.Name.loadingLocations, object: nil)
         NetworkHelper.sharedInstance.loadLocations { (result) in
@@ -63,9 +62,9 @@ class CustomTabBarController: UITabBarController {
             case .Success:
                 NotificationCenter.default.post(name: NSNotification.Name.locationsLoaded, object: nil)
             case .NoInternet:
-                self.showAlert(title: "Atenção", message: "Conecte-se à internet e pressione o botão de atualizar.")
+                self.showAlert(title: "Attention", message: "You are offline.")
             case .Fail:
-                self.showAlert(title: "Atenção", message: "Ocorreu um erro durante o download dos dados.")
+                self.showAlert(title: "Attention", message: "Could not load data.")
             }
         }
     }

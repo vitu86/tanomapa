@@ -18,6 +18,9 @@ class FindLocationViewController: UIViewController {
     var location:String?
     var link:String?
     
+    // MARK: Private properties
+    private var placeMark:CLPlacemark?
+    
     //MARK: Override functions
     override func viewDidLoad() {
         showCenterIndicator()
@@ -28,9 +31,8 @@ class FindLocationViewController: UIViewController {
                     if markers!.count <= 0 {
                         self.showAlertAndDismiss()
                     } else {
-                        for item in markers! {
-                            self.addAnnotation(placeMark: item)
-                        }
+                        self.placeMark = markers![0]
+                        self.addAnnotation()
                         self.hideCenterIndicator()
                     }
                 } else {
@@ -44,14 +46,43 @@ class FindLocationViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction func finishButtonTapped(_ sender: Any) {
+        showCenterIndicator()
+        
+        var location:DataToServer = DataToServer()
+        // Using fixed first and last name because the link
+        // https://onthemap-api.udacity.com/v1/users
+        // passing the id or the key received on login
+        // is returning wrong data.
+        location.firstName = "Vitor"
+        location.lastName = "Costa"
+        location.latitude = String(format:"%f", placeMark!.location!.coordinate.latitude)
+        location.longitude = String(format:"%f", placeMark!.location!.coordinate.longitude)
+        location.mapString = self.location
+        location.mediaURL = self.link
+        
+        NetworkHelper.sharedInstance.postLocation(location) { (result) in
+            self.hideCenterIndicator()
+            switch result {
+            case .Success:
+                NotificationCenter.default.post(name: NSNotification.Name.shouldReloadLocations, object: nil)
+                self.dismiss(animated: true, completion: nil)
+            case .NoInternet:
+                self.showAlert(title: "Attention", message: "You are offline")
+                self.navigationController?.popViewController(animated: true)
+            case .Fail:
+                self.showAlert(title: "Attention", message: "Could not send location")
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     // MARK: Private functions
-    private func addAnnotation(placeMark:CLPlacemark) {
+    private func addAnnotation() {
         let annotation = MKPointAnnotation()
-        if let location = placeMark.location {
+        if let location = placeMark!.location {
             annotation.coordinate = location.coordinate
             mapView.addAnnotation(annotation)
+            mapView.centerCoordinate = annotation.coordinate
         }
     }
     

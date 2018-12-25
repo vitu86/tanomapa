@@ -192,10 +192,7 @@
                             <constraint firstItem="BA5-Kd-AR1" firstAttribute="top" secondItem="TwV-do-emL" secondAttribute="bottom" constant="10" id="DNL-l7-2Su"/>
                             <constraint firstItem="TwV-do-emL" firstAttribute="top" secondItem="D2P-Za-7qh" secondAttribute="bottom" constant="30" id="Ogn-0C-ubG"/>
                             <constraint firstItem="k6Y-ka-MaW" firstAttribute="trailing" secondItem="N4i-08-z7w" secondAttribute="trailing" constant="30" id="Qqv-nj-ZK7"/>
-                            <constraint firstItem="BA5-Kd-AR1" firstAttribute="centerX" secondItem="yKS-N2-mm0" secondAttribute="centerX" id="YBV-ug-evK"/>
                             <constraint firstItem="D2P-Za-7qh" firstAttribute="top" secondItem="k6Y-ka-MaW" secondAttribute="top" constant="20" id="Yrx-Fw-CKL"/>
-                            <constraint firstItem="N4i-08-z7w" firstAttribute="centerX" secondItem="yKS-N2-mm0" secondAttribute="centerX" id="dzq-Zm-2IV"/>
-                            <constraint firstItem="TwV-do-emL" firstAttribute="centerX" secondItem="yKS-N2-mm0" secondAttribute="centerX" id="hjg-s9-lR7"/>
                             <constraint firstItem="k6Y-ka-MaW" firstAttribute="trailing" secondItem="BA5-Kd-AR1" secondAttribute="trailing" constant="30" id="lIJ-JZ-lN4"/>
                             <constraint firstItem="TwV-do-emL" firstAttribute="leading" secondItem="k6Y-ka-MaW" secondAttribute="leading" constant="30" id="m3E-uG-aun"/>
                             <constraint firstItem="N4i-08-z7w" firstAttribute="top" secondItem="BA5-Kd-AR1" secondAttribute="bottom" constant="30" id="rNc-1d-UHE"/>

@@ -18,6 +18,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationTextField.delegate = self
+        locationTextField.becomeFirstResponder()
         linkTextField.delegate = self
     }
     
