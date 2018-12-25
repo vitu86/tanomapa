@@ -22,6 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
         NotificationCenter.default.addObserver(self, selector: #selector(putLocationsOnMap), name: Notification.Name.locationsLoaded, object: nil)
     }
     
@@ -41,6 +42,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private func addAnnotation(location:StudentInformation) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude!, longitude: location.longitude!)
+        
+        if let firstName = location.firstName, let lastName = location.lastName {
+            annotation.title = firstName + " " + lastName
+        } else {
+            annotation.title = " "
+        }
+        
+        // No need to check here if mediaURL is not nil because the delegate function is already checking
+        annotation.subtitle = location.mediaURL
+        
         mapView.addAnnotation(annotation)
     }
     
@@ -50,21 +61,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if !(annotation is MKPointAnnotation) {
             return nil
         }
-        
+
         let annotationIdentifier = "StudentInformationPin"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView
+
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView!.canShowCallout = true
-        }
-        else {
+            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        } else {
             annotationView!.annotation = annotation
         }
-        
-        let pinImage:UIImage = UIImage.init(named: "IconPin")!
-        annotationView!.image = pinImage
-        
+
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+            }
+        }
     }
 }
