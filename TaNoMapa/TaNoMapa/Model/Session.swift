@@ -22,3 +22,14 @@ struct Account: Codable {
     let registered: Bool?
     let key: String?
 }
+
+struct UserData: Codable {
+    let firstName: String?
+    let lastName: String?
+    
+    enum CodingKeys: String, CodingKey
+    {
+        case firstName = "first_name"
+        case lastName = "last_name"
+    }
+}

@@ -49,12 +49,8 @@ class FindLocationViewController: UIViewController {
         showCenterIndicator()
         
         var location:DataToServer = DataToServer()
-        // Using fixed first and last name because the link
-        // https://onthemap-api.udacity.com/v1/users
-        // passing the id or the key received on login
-        // is returning wrong data.
-        location.firstName = "Vitor"
-        location.lastName = "Costa"
+        location.firstName = DataSingleton.sharedInstance.userData.firstName
+        location.lastName = DataSingleton.sharedInstance.userData.lastName
         location.latitude = String(format:"%f", placeMark!.location!.coordinate.latitude)
         location.longitude = String(format:"%f", placeMark!.location!.coordinate.longitude)
         location.mapString = self.location

@@ -52,9 +52,11 @@ class NetworkHelper {
                     }
                 } else {
                     DataSingleton.sharedInstance.session = sessionData
-                    DispatchQueue.main.async {
-                        onCompletion(Answer.Success)
-                    }
+                    self.getUserData(onCompletion: { (answer) in
+                        DispatchQueue.main.async {
+                            onCompletion(answer)
+                        }
+                    })
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -174,17 +176,33 @@ class NetworkHelper {
         task.resume()
     }
     
-//    func getUserData() {
-//        let request = NSMutableURLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(self.session!.account!.key!)")!)
-//        let session = URLSession.shared
-//        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-//            if error != nil { // Handle error...
-//                return
-//            }
-//            let range = Range(5..<data!.count)
-//            let newData = data?.subdata(in: range) /* subset response data! */
-//            print("User data: ", NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-//        }
-//        task.resume()
-//    }
+    func getUserData(onCompletion: @escaping (Answer) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(DataSingleton.sharedInstance.session.account!.key!)")!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    onCompletion(Answer.NoInternet)
+                }
+                return
+            }
+            
+            let range = 5..<data!.count
+            let newData = data?.subdata(in: range)
+            let decoder = JSONDecoder()
+            
+            do {
+                let userData = try decoder.decode(UserData.self, from: newData!)
+                DataSingleton.sharedInstance.userData = userData
+                DispatchQueue.main.async {
+                    onCompletion(Answer.Success)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    onCompletion(Answer.Fail)
+                }
+            }
+        }
+        task.resume()
+    }
 }

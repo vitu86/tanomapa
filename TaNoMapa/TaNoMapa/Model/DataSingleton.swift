@@ -16,6 +16,7 @@ class DataSingleton {
     // MARK: Public properties
     var session:PostSession!
     var locations:[StudentInformation] = []
+    var userData:UserData!
     
     // private init for override purpose
     private init() {
