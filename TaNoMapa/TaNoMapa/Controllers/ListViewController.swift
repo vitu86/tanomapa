@@ -19,8 +19,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
-        NotificationCenter.default.addObserver(self, selector: #selector(loadInfoToTableView), name: Notification.Name.locationsLoaded, object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,21 +26,24 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
+        NotificationCenter.default.addObserver(self, selector: #selector(loadInfoToTableView), name: Notification.Name.locationsLoaded, object: nil)
         // We call this just in case locations are already loaded and no notification is received on start up
         loadInfoToTableView(notification: nil)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: Private functions
     @objc private func loadInfoToTableView(notification:Notification?) {
-        locationsList = NetworkHelper.sharedInstance.studentsInformation
+        locationsList = DataSingleton.sharedInstance.locations
         tableView.reloadData()
     }
     
     // MARK: Table View Delegate Functions
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locationsList.count
     }

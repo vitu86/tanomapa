@@ -17,13 +17,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
-        NotificationCenter.default.addObserver(self, selector: #selector(putLocationsOnMap), name: Notification.Name.locationsLoaded, object: nil)
         mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // When locations are loaded, put them on the map. Until there, the user can use the map without block the UI.
+        NotificationCenter.default.addObserver(self, selector: #selector(putLocationsOnMap), name: Notification.Name.locationsLoaded, object: nil)
         // We call this just in case locations are already loaded and no notification is received on start up
         putLocationsOnMap(notification: nil)
     }
@@ -36,9 +36,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Private functions
     @objc private func putLocationsOnMap(notification:Notification?) {
         mapView.removeAnnotations(mapView.annotations)
-        for item in NetworkHelper.sharedInstance.studentsInformation {
+        for item in DataSingleton.sharedInstance.locations {
             addAnnotation(location: item)
         }
+        mapView.setNeedsLayout()
     }
     
     private func addAnnotation(location:StudentInformation) {

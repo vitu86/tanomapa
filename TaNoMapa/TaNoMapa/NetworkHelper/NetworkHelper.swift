@@ -20,19 +20,8 @@ class NetworkHelper {
     // MARK: STATIC OBJECT REFERENCE
     static let sharedInstance:NetworkHelper = NetworkHelper()
     
-    // MARK: Private properties
-    private var session:PostSession?
-    private var locations:[StudentInformation] = []
-    
     // MARK: Private constants
     private let sessionBaseUrl: String = "https://onthemap-api.udacity.com/v1/session"
-    
-    // MARK: Public properties
-    var studentsInformation:[StudentInformation] {
-        get {
-            return locations
-        }
-    }
     
     // private init for override purpose
     private init() {
@@ -62,7 +51,7 @@ class NetworkHelper {
                         onCompletion(Answer.Fail)
                     }
                 } else {
-                    self.session = sessionData
+                    DataSingleton.sharedInstance.session = sessionData
                     DispatchQueue.main.async {
                         onCompletion(Answer.Success)
                     }
@@ -122,7 +111,7 @@ class NetworkHelper {
     }
     
     func loadLocations(onCompletion: @escaping (Answer) -> Void) {
-        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?order=-createdAt")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-createdAt")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = URLSession.shared
@@ -142,12 +131,15 @@ class NetworkHelper {
                         }
                         return
                 }
-                self.locations = []
+                
+                var locations:[StudentInformation] = []
                 for item in infoArray {
                     if let newLocation = StudentInformation(json: item) {
-                        self.locations.append(newLocation)
+                        locations.append(newLocation)
                     }
                 }
+                DataSingleton.sharedInstance.locations = locations
+                
                 DispatchQueue.main.async {
                     onCompletion(Answer.Success)
                 }
@@ -166,7 +158,7 @@ class NetworkHelper {
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(self.session!.account!.key!)\", \"firstName\": \"\(location.firstName!)\", \"lastName\": \"\(location.lastName!)\",\"mapString\": \"\(location.mapString!)\", \"mediaURL\": \"\(location.mediaURL!)\",\"latitude\": \(location.latitude!), \"longitude\": \(location.longitude!)}".data(using: String.Encoding.utf8)
+        request.httpBody = "{\"uniqueKey\": \"\(DataSingleton.sharedInstance.session.account!.key!)\", \"firstName\": \"\(location.firstName!)\", \"lastName\": \"\(location.lastName!)\",\"mapString\": \"\(location.mapString!)\", \"mediaURL\": \"\(location.mediaURL!)\",\"latitude\": \(location.latitude!), \"longitude\": \(location.longitude!)}".data(using: String.Encoding.utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {

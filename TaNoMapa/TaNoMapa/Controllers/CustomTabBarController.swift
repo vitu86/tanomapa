@@ -15,7 +15,7 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildNavigation()
-        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: Notification.Name.locationsLoaded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: Notification.Name.shouldReloadLocations, object: nil)
         loadData(notification: nil)
     }
     
